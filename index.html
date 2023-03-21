@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora</title>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <div class="corpo">
+        <div class="tela"> 
+            <h3 id="result">resultado</h3>
+        </div>
+        <div class="botoes">
+            <div class="botao b1" onclick="porc()">%</div>
+            <div class="botao b2" onclick="ce()">CE</div>
+            <div class="botao b3" onclick="apagar()">⌫</div>
+            <div class="botao b4" onclick="div()">÷</div>
+            <div class="botao b5" onclick="b7()">7</div>
+            <div class="botao b6" onclick="b8()">8</div>
+            <div class="botao b7" onclick="b9()">9</div>
+            <div class="botao b8" onclick="mult()">x</div>
+            <div class="botao b9" onclick="b4()">4</div>
+            <div class="botao b10" onclick="b5()">5</div>
+            <div class="botao b11" onclick="b6()">6</div>
+            <div class="botao b12" onclick="sub()">-</div>
+            <div class="botao b13" onclick="b1()">1</div>
+            <div class="botao b14" onclick="b2()">2</div>
+            <div class="botao b15" onclick="b3()">3</div>
+            <div class="botao b16" onclick="soma()">+</div>
+            <div class="botao b17" onclick="virgula()">,</div>
+            <div class="botao b18" onclick="b0()">0</div>
+            <div class="botao igual" onclick="result()">=</div>
+        </div>
+    </div>
+    <script>
+    let var1 = 0;
+    let var2 = 0;
+    let varfinal = "0";
+    let controle = 0;
+    let control = "";
+    let x = -1;
+        function ce(){
+            document.getElementById("result").innerHTML = "0";
+            var1 = 0;
+            var2 = 0;
+            varfinal= 0;
+        }
+        function virgula(){
+            alert("Ainda não foi implementado!");
+        }
+        function porc(){
+            alert("Ainda não foi implementado!");
+        }
+        function apagar(){
+            if(controle == 1){
+                varfinal = varfinal.substring(0,varfinal.length - 1);
+                document.getElementById("result").innerHTML = varfinal;
+                controle = 0;
+            }
+            else{
+                var2 = var2.substring(0,var2.length - 1);
+                varfinal = varfinal.substring(0,varfinal.length - 1);
+                document.getElementById("result").innerHTML = varfinal;
+                if(var2.length == 0){
+                    ce();
+                }
+            }
+        }
+        function result(){
+            //busca soma
+            x = varfinal.indexOf("+");
+            if(x != -1){
+                var1 = Number.parseInt(var1) + Number.parseInt(var2);
+            };
+            x = varfinal.indexOf("-");
+            if(x != -1){
+                var1 = Number.parseInt(var1) - Number.parseInt(var2);
+            };
+            x = varfinal.indexOf("x");
+            if(x != -1){
+                var1 = Number.parseInt(var1) * Number.parseInt(var2);
+            };
+            x = varfinal.indexOf("÷");
+            if(x != -1){
+                var1 = Number.parseInt(var1) / Number.parseInt(var2);
+            };
+            
+            varfinal = var1;
+            document.getElementById("result").innerHTML = varfinal;
+            controle = 1;
+            
+
+        }
+        function soma(){
+            if(controle == "0"){
+            var1 = Number.parseInt(var1) + Number.parseInt(var2);
+            varfinal = var1 + "+";
+            document.getElementById("result").innerHTML = varfinal;
+            controle = 1;
+            control = 0;
+            }
+            if(controle == 1){
+                varfinal = varfinal.substring(0,varfinal.length - 1);
+                varfinal = varfinal + "+";
+                document.getElementById("result").innerHTML = varfinal;
+                control = 0;
+            }
+
+        }
+        function sub(){
+            if(controle == "0"){
+            var1 = Number.parseInt(var2) - Number.parseInt(var1);
+            varfinal = var1 + "-";
+            document.getElementById("result").innerHTML = varfinal;
+            controle = 1;
+            control = 0;
+            }
+            if(controle == 1){
+                varfinal = varfinal.substring(0,varfinal.length - 1);
+                varfinal = varfinal + "-";
+                document.getElementById("result").innerHTML = varfinal;
+                control = 0;
+            }
+
+        }
+        function mult(){
+            if(controle == "0"){
+            if(var1 != 0){var1 = Number.parseInt(var1) * Number.parseInt(var2);}
+            else{
+                var1 = var2;
+            }
+            varfinal = var1 + "x";
+            document.getElementById("result").innerHTML = varfinal;
+            controle = 1;
+            control = 0;
+            }
+            if(controle == 1){
+                varfinal = varfinal.substring(0,varfinal.length - 1);
+                varfinal = varfinal + "x";
+                document.getElementById("result").innerHTML = varfinal;
+                control = 0;
+            }
+        }
+        function div(){
+            if(controle == "0"){
+            if(var1 != 0){var1 = Number.parseInt(var1) / Number.parseInt(var2);}
+            else{
+                var1 = var2;
+            }
+            varfinal = var1 + "÷";
+            document.getElementById("result").innerHTML = varfinal;
+            controle = 1;
+            control = 0;
+            }
+            if(controle == 1){
+                varfinal = varfinal.substring(0,varfinal.length - 1);
+                varfinal = varfinal + "÷";
+                document.getElementById("result").innerHTML = varfinal;
+                control = 0;
+            }
+
+        }
+        function b1(){
+            if(control == 1 && varfinal != 0){
+                //alert("entrar para repetir");
+                var2 = var2 + "1";
+                if(varfinal != var2){
+                    varfinal = varfinal + "1";
+                }
+                document.getElementById("result").innerHTML = varfinal;
+                controle = 0;
+            
+            }
+            if(controle == 1){
+                //alert("entrar apos sinal");
+                var2 = 1;
+                varfinal = varfinal + var2;
+                document.getElementById("result").innerHTML = varfinal;
+                control = 1;
+                controle = 0;
+            }
+            
+            if(controle == 0 && varfinal == 0){
+                //alert("Entrar na primeira vez");
+                var2 = 1;
+                varfinal = var2;
+                document.getElementById("result").innerHTML = var2;
+                control = 1;
+                controle = 0;
+            }
+        }
+        function b2(){
+            if(control == 1 && varfinal != 0){
+                //alert("entrar para repetir");
+                var2 = var2 + "2";
+                if(varfinal != var2){
+                    varfinal = varfinal + "2";
+                }
+                document.getElementById("result").innerHTML = varfinal;
+                controle = 0;
+            
+            }
+            if(controle == 1){
+                //alert("entrar apos sinal");
+                var2 = 2;
+                varfinal = varfinal + var2;
+                document.getElementById("result").innerHTML = varfinal;
+                control = 1;
+                controle = 0;
+            }
+            
+            if(controle == 0 && varfinal == 0){
+                //alert("Entrar na primeira vez");
+                var2 = 2;
+                varfinal = var2;
+                document.getElementById("result").innerHTML = var2;
+                control = 1;
+                controle = 0;
+            }
+        }
+        function b3(){
+            if(control == 1 && varfinal != 0){
+                //alert("entrar para repetir");
+                var2 = var2 + "3";
+                if(varfinal != var2){
+                    varfinal = varfinal + "3";
+                }
+                document.getElementById("result").innerHTML = varfinal;
+                controle = 0;
+            
+            }
+            if(controle == 1){
+                //alert("entrar apos sinal");
+                var2 = 3;
+                varfinal = varfinal + var2;
+                document.getElementById("result").innerHTML = varfinal;
+                control = 1;
+                controle = 0;
+            }
+            
+            if(controle == 0 && varfinal == 0){
+                //alert("Entrar na primeira vez");
+                var2 = 3;
+                varfinal = var2;
+                document.getElementById("result").innerHTML = var2;
+                control = 1;
+                controle = 0;
+            }
+        }
+        function b4(){
+            if(control == 1 && varfinal != 0){
+                //alert("entrar para repetir");
+                var2 = var2 + "4";
+                if(varfinal != var2){
+                    varfinal = varfinal + "4";
+                }
+                document.getElementById("result").innerHTML = varfinal;
+                controle = 0;
+            
+            }
+            if(controle == 1){
+                //alert("entrar apos sinal");
+                var2 = 4;
+                varfinal = varfinal + var2;
+                document.getElementById("result").innerHTML = varfinal;
+                control = 1;
+                controle = 0;
+            }
+            
+            if(controle == 0 && varfinal == 0){
+                //alert("Entrar na primeira vez");
+                var2 = 4;
+                varfinal = var2;
+                document.getElementById("result").innerHTML = var2;
+                control = 1;
+                controle = 0;
+            }
+        }
+        function b5(){
+            if(control == 1 && varfinal != 0){
+                //alert("entrar para repetir");
+                var2 = var2 + "5";
+                if(varfinal != var2){
+                    varfinal = varfinal + "5";
+                }
+                document.getElementById("result").innerHTML = varfinal;
+                controle = 0;
+            
+            }
+            if(controle == 1){
+                //alert("entrar apos sinal");
+                var2 = 5;
+                varfinal = varfinal + var2;
+                document.getElementById("result").innerHTML = varfinal;
+                control = 1;
+                controle = 0;
+            }
+            
+            if(controle == 0 && varfinal == 0){
+                //alert("Entrar na primeira vez");
+                var2 = 5;
+                varfinal = var2;
+                document.getElementById("result").innerHTML = var2;
+                control = 1;
+                controle = 0;
+            }
+        }
+        function b6(){
+            if(control == 1 && varfinal != 0){
+                //alert("entrar para repetir");
+                var2 = var2 + "6";
+                if(varfinal != var2){
+                    varfinal = varfinal + "6";
+                }
+                document.getElementById("result").innerHTML = varfinal;
+                controle = 0;
+            
+            }
+            if(controle == 1){
+                //alert("entrar apos sinal");
+                var2 = 6;
+                varfinal = varfinal + var2;
+                document.getElementById("result").innerHTML = varfinal;
+                control = 1;
+                controle = 0;
+            }
+            
+            if(controle == 0 && varfinal == 0){
+                //alert("Entrar na primeira vez");
+                var2 = 6;
+                varfinal = var2;
+                document.getElementById("result").innerHTML = var2;
+                control = 1;
+                controle = 0;
+            }
+        }
+        function b7(){
+            if(control == 1 && varfinal != 0){
+                //alert("entrar para repetir");
+                var2 = var2 + "7";
+                if(varfinal != var2){
+                    varfinal = varfinal + "7";
+                }
+                document.getElementById("result").innerHTML = varfinal;
+                controle = 0;
+            
+            }
+            if(controle == 1){
+                //alert("entrar apos sinal");
+                var2 = 7;
+                varfinal = varfinal + var2;
+                document.getElementById("result").innerHTML = varfinal;
+                control = 1;
+                controle = 0;
+            }
+            
+            if(controle == 0 && varfinal == 0){
+                //alert("Entrar na primeira vez");
+                var2 = 7;
+                varfinal = var2;
+                document.getElementById("result").innerHTML = var2;
+                control = 1;
+                controle = 0;
+            }
+        }
+        function b8(){
+            if(control == 1 && varfinal != 0){
+                //alert("entrar para repetir");
+                var2 = var2 + "8";
+                if(varfinal != var2){
+                    varfinal = varfinal + "8";
+                }
+                document.getElementById("result").innerHTML = varfinal;
+                controle = 0;
+            
+            }
+            if(controle == 1){
+                //alert("entrar apos sinal");
+                var2 = 8;
+                varfinal = varfinal + var2;
+                document.getElementById("result").innerHTML = varfinal;
+                control = 1;
+                controle = 0;
+            }
+            
+            if(controle == 0 && varfinal == 0){
+                //alert("Entrar na primeira vez");
+                var2 = 8;
+                varfinal = var2;
+                document.getElementById("result").innerHTML = var2;
+                control = 1;
+                controle = 0;
+            }
+        }
+        function b9(){
+            if(control == 1 && varfinal != 0){
+                //alert("entrar para repetir");
+                var2 = var2 + "9";
+                if(varfinal != var2){
+                    varfinal = varfinal + "9";
+                }
+                document.getElementById("result").innerHTML = varfinal;
+                controle = 0;
+            
+            }
+            if(controle == 1){
+                //alert("entrar apos sinal");
+                var2 = 9;
+                varfinal = varfinal + var2;
+                document.getElementById("result").innerHTML = varfinal;
+                control = 1;
+                controle = 0;
+            }
+            
+            if(controle == 0 && varfinal == 0){
+                //alert("Entrar na primeira vez");
+                var2 = 9;
+                varfinal = var2;
+                document.getElementById("result").innerHTML = var2;
+                control = 1;
+                controle = 0;
+            }
+        }
+        function b0(){
+            if(control == 1 && varfinal != 0){
+                //alert("entrar para repetir");
+                var2 = var2 + "0";
+                if(varfinal != var2){
+                    varfinal = varfinal + "0";
+                }
+                document.getElementById("result").innerHTML = varfinal;
+                controle = 0;
+            
+            }
+            if(controle == 1){
+                //alert("entrar apos sinal");
+                var2 = 0;
+                varfinal = varfinal + var2;
+                document.getElementById("result").innerHTML = varfinal;
+                control = 1;
+                controle = 0;
+            }
+            
+            if(controle == 0 && varfinal == 0){
+                //alert("Entrar na primeira vez");
+                var2 = 0;
+                varfinal = var2;
+                document.getElementById("result").innerHTML = var2;
+                control = 1;
+                controle = 0;
+            }
+        }
+    </script>
+    
+
+</body>
+</html>

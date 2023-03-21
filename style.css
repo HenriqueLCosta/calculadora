@@ -1,0 +1,47 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+}
+.corpo{
+    background-color: rgb(216, 216, 216);
+    width: 500px;
+
+}
+.tela{
+    width: 450px;
+    margin: 10px;
+    font-size: 30px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+}
+.botoes{
+display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.botao{
+    width: 100px;
+    height: 60px;
+    margin: 3px;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(155, 145, 163);
+    padding-top: 30px;
+}
+.botao:hover{
+    background-color: #494949;
+}
+.botao:active{
+    background-color: #000000;
+}
+.botao.igual{
+    width: 206px;
+}
+.botao span{
+    padding-top: 10px;
+}
